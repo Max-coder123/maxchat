@@ -1,4 +1,2 @@
 # maxchat
-
-
-work in progress - flashcard generator using OpenAI API
+command line ai chat
