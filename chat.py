@@ -1,20 +1,28 @@
 import json
 import os
 import requests
+import sys
+
 from dotenv import load_dotenv
 from pyfiglet import Figlet
 
 load_dotenv()  # take environment variables from .env.
 
+if not os.environ.get('OPENAI_API_KEY'):
+    print("OPENAI_API_KEY not found in env")
+    sys.exit(0)
 
 f = Figlet(font="varsity")
 fonts = f.getFonts()
 print(f.renderText("Max's Chat"))
 
-
 messages = []
 while True:
-    question = input("> ")
+    try:
+        question = input("> ")
+    except KeyboardInterrupt:
+        break
+
     messages.append({"role": "user", "content": question})
     headers = {"Authorization": f"Bearer {os.environ.get('OPENAI_API_KEY')}"}
     url = "https://api.openai.com/v1/chat/completions"
