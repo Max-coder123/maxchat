@@ -27,7 +27,7 @@ while True:
     headers = {"Authorization": f"Bearer {os.environ.get('OPENAI_API_KEY')}"}
     url = "https://api.openai.com/v1/chat/completions"
     data = {
-        "model": "gpt-4-turbo",
+        "model": "gpt-4o",
         "messages": messages,
         "temperature": 0.5,
         "max_tokens": 1000,
